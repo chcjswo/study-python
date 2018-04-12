@@ -1,17 +1,7 @@
-import sys
-import io
-import urllib.request as dw
+from urllib.parse import urljoin
 
-sys.stdout = io.TextIOWrapper(sys.stdout.detach(), encoding = 'utf-8')
-sys.stderr = io.TextIOWrapper(sys.stderr.detach(), encoding = 'utf-8')
-
-imgUrl ="http://post.phinf.naver.net/20160621_169/1466482468068lmSHj_JPEG/If7GeIbOPZuYwI-GI3xU7ENRrlfI.jpg"
-htmlURL ="http://google.com"
-
-savePath1 ="d:/test1.jpg"
-savePath2 ="d:/index.html"
-
-dw.urlretrieve(imgUrl, savePath1)
-dw.urlretrieve(htmlURL, savePath2)
-
-print("다운로드 완료!")
+baseUrl = "http://test.com/html/a.html"
+print(">>", urljoin(baseUrl, "b.html"))
+print(">>", urljoin(baseUrl, "sub/c.html"))
+print(">>", urljoin(baseUrl, "../index.html"))
+print(">>", urljoin(baseUrl, "../test/index.html"))
