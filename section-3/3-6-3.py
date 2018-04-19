@@ -24,7 +24,7 @@ driver.implicitly_wait(5)
 
 driver.find_element_by_xpath('//*[@id="user_login"]').send_keys('id')
 driver.find_element_by_xpath('//*[@id="user_pass"]').send_keys('pw')
-driver.find_elements_by_xpath('//*[@id="wp-submit"]').click()
+driver.find_element_by_xpath('//*[@id="wp-submit"]').click()
 
 driver.quit()
 
