@@ -20,10 +20,11 @@ class NcafeWriteAtt:
 
     # 네이버 카페 로그인 && 출석 체크
     def writeAttendCheck(self):
+        print("writeAttendCheck")
         self.driver.get("https://nid.naver.com/nidlogin.login")
-        self.driver.find_element_by_name('id').send_keys('aaaa')
-        self.driver.find_element_by_name('pw').send_keys('aaaa')
-        self.driver.find_element_by_xpath('//*[id="frmNIDLogin"]/fieldset/input').click()
+        self.driver.find_element_by_name('id').send_keys('id')
+        self.driver.find_element_by_name('pw').send_keys('pw')
+        self.driver.find_element_by_xpath('//*[@id="frmNIDLogin"]/fieldset/input').click()
         self.driver.implicitly_wait(30)
         self.driver.get("http://cafe.naver.com/AttendanceView.nhn?search.clubid=26652445&search.menuid=10")
         self.driver.implicitly_wait(30)
