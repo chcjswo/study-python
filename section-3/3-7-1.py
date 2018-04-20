@@ -13,8 +13,8 @@ class NcafeWriteAtt:
         chrome_options = Options()
         chrome_options.add_argument("--headless") #CLI
         self.driver = webdriver.Chrome(
-            chrome_options=chrome_options,
-            executable_path = "C:/Users/User/workspace/study-python/section-3/webdriver/chrome/chromedriver"
+            chrome_options = chrome_options
+            # executable_path = "C:/Users/User/workspace/study-python/section-3/webdriver/chrome/chromedriver"
         )
         self.driver.implicitly_wait(5)
 
