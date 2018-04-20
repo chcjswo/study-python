@@ -15,7 +15,6 @@ driver = webdriver.Chrome(
     # chrome_options = chrome_options,
     chrome_options = None
     # executable_path = "C:/Users/User/workspace/study-python/section-3/webdriver/chrome/chromedriver"
-    # executable_path = "F:\workspace\study-python\section-3\webdriver\chrome\chromedriver"
 )
 driver.set_window_size(1920, 1280)
 driver.implicitly_wait(5)

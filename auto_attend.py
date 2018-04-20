@@ -15,7 +15,6 @@ class NcafeWriteAtt:
         self.driver = webdriver.Chrome(
             chrome_options = chrome_options,
             # executable_path = "C:/Users/User/workspace/study-python/section-3/webdriver/chrome/chromedriver
-            # executable_path = "F:\workspace\study-python\section-3\webdriver\chrome\chromedriver"
         )
         self.driver.implicitly_wait(5)
 

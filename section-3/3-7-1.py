@@ -12,10 +12,7 @@ class NcafeWriteAtt:
     def __init__(self):
         chrome_options = Options()
         chrome_options.add_argument("--headless") #CLI
-        self.driver = webdriver.Chrome(
-            chrome_options = chrome_options
-            # executable_path = "C:/Users/User/workspace/study-python/section-3/webdriver/chrome/chromedriver"
-        )
+        self.driver = webdriver.Chrome(chrome_options = chrome_options)
         self.driver.implicitly_wait(5)
 
     # 네이버 카페 로그인 && 출석 체크
