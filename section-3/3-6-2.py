@@ -10,10 +10,7 @@ sys.stderr = io.TextIOWrapper(sys.stderr.detach(), encoding = 'utf-8')
 chrome_options = Options()
 chrome_options.add_argument("--headless") #CLI 환경설정
 
-driver = webdriver.Chrome(
-    chrome_options = chrome_options,
-    executable_path = "C:/Users/User/workspace/study-python/section-3/webdriver/chrome/chromedriver"
-)
+driver = webdriver.Chrome(chrome_options = chrome_options)
 # driver.set_window_size(1920, 1280)
 # driver.implicitly_wait(5)
 
