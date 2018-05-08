@@ -1,0 +1,19 @@
+{
+  "people": [
+    {
+      "name": "tony",
+      "website": "dolpic.kr",
+      "from": "korea"
+    },
+    {
+      "name": "json",
+      "website": "google.com",
+      "from": "usa"
+    },
+    {
+      "name": "jane",
+      "website": "apple.com",
+      "from": "france"
+    }
+  ]
+}
