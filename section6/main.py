@@ -1,7 +1,7 @@
 import sys
 from PyQt5.QtWidgets import *
 from PyQt5 import QtCore
-from PyQt5.QtCore import pyqtSlot, pyqtSignal
+from PyQt5.QtCore import pyqtSlot, pyqtSignal, QUrl
 from PyQt5 import uic
 import re
 import datetime
@@ -22,8 +22,10 @@ class Main(QMainWindow, Ui_YoutubeDownload):
         # 시그널 초기
         self.initSignal()
         # 로그인 관련 변
-        self.user_id = None
+        self.user_id = 'test'
         self.user_pw = None
+        # 재생 여부
+        self.is_play = False
 
     # 기본 UI 비활성화
     def initAuthLock(self):
@@ -51,13 +53,15 @@ class Main(QMainWindow, Ui_YoutubeDownload):
 
     def initSignal(self):
         self.loginButton.clicked.connect(self.authCheck)
+        self.previewButton.clicked.connect(self.load_url)
+        self.exitButton.clicked.connect(QtCore.QCoreApplication.instance().quit)
 
     @pyqtSlot()
     def authCheck(self):
-        dlg = AuthDialog()
-        dlg.exec_()
-        self.user_id = dlg.user_id
-        self.user_pw = dlg.user_pw
+        # dlg = AuthDialog()
+        # dlg.exec_()
+        # self.user_id = dlg.user_id
+        # self.user_pw = dlg.user_pw
         # print('id: %s password: %s' %(self.user_id, self.user_pw))
 
         if True:
@@ -65,8 +69,37 @@ class Main(QMainWindow, Ui_YoutubeDownload):
             self.loginButton.setText('인증완료')
             self.loginButton.setEnabled(False)
             self.urlTextEdit.setEnabled(True)
+            self.append_log_msg('login success')
         else:
             QMessageBox(self, '인증오류', '아이디 또는 비밀번호 인증 오류')
+
+    def load_url(self):
+        url = self.urlTextEdit.text().strip()
+        print(url)
+        v = re.compile('^https://www.youtube.com/?')
+        if self.is_play:
+            pass
+        else:
+            if v.match(url) is not None:
+                print('play~~~')
+                self.append_log_msg('Play Click')
+                self.webView.load(QUrl(url))
+                # self.showStatusMsg(url + ' 재생중')
+                self.previewButton.setText('중지')
+                self.is_play = True
+            else:
+                print('asdfasdfasdasdsadfsaf')
+
+    def append_log_msg(self, msg):
+        now = datetime.datetime.now()
+        nowDatatime = now.strftime('%Y-%m-%d %H:%M:%S')
+        app_msg = self.user_id + ' : ' + msg + ' - (' + nowDatatime + ')'
+        # print(app_msg)
+        self.plainTextEdit.appendPlainText(app_msg)
+
+        # 활동 로그 저장
+        with open('C:\\Users\\User\\workspace\\study-python\\section6\\log\\log.txt', 'a') as f:
+            f.write(app_msg + '\n')
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
